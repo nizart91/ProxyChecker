@@ -18,7 +18,7 @@ defineProps({ proxies: Array, task: Object })
                 <th>Status</th>
                 <th>Type</th>
                 <th>Location</th>
-                <th>Timeout</th>
+                <th>Timeout, ms</th>
                 <th>Real IP</th>
             </tr>
             </thead>

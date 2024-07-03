@@ -32,7 +32,10 @@ class TaskController extends Controller
                 $join->on('tasks.id','=','proxies.task_id');
             })
             ->select('tasks.*')
-            ->selectRaw('COUNT(proxies.id) as total, SUM(CASE WHEN proxies.finished_at IS NOT NULL THEN 1 ELSE 0 END) AS finished')
+            ->selectRaw('COUNT(proxies.id) as total,
+                                    SUM(CASE WHEN proxies.finished_at IS NOT NULL THEN 1 ELSE 0 END) AS finished,
+                                    SUM(CASE WHEN proxies.status = 1 THEN 1 ELSE 0 END) AS worked
+            ')
             ->groupBy('tasks.id')
             ->orderBy('tasks.id', 'desc')
             ->limit(50)

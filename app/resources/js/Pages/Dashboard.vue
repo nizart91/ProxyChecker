@@ -109,6 +109,7 @@ export default {
                     <th>#</th>
                     <th>Time</th>
                     <th>Progress</th>
+                    <th>Worked</th>
                 </tr>
             </thead>
             <tbody>
@@ -128,6 +129,19 @@ export default {
                                  aria-valuemin="0"
                                  :aria-valuemax="task.total"
                             > {{ task.finished }} / {{ task.total }}</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="progress">
+                            <div class="progress-bar"
+                                 role="progressbar"
+                                 :style="{
+                                     width: `${task.worked / task.total * 100}` + '%'
+                                 }"
+                                 :aria-valuenow="task.worked"
+                                 aria-valuemin="0"
+                                 :aria-valuemax="task.total"
+                            > {{ task.worked }} / {{ task.total }}</div>
                         </div>
                     </td>
                 </tr>

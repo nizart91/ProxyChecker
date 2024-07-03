@@ -30,6 +30,12 @@ services:
     networks:
       - app-network
     command: /bin/sh -c "composer update && php-fpm"
+    healthcheck:
+      test: ["CMD-SHELL", "[ -f /var/www/.env ] || exit 1"]
+      interval: 30s
+      retries: 10
+      timeout: 10s
+      start_period: 60s
 
   redis:
     image: redis:alpine
@@ -68,8 +74,8 @@ services:
     networks:
       - app-network
     depends_on:
-      - db
-      - app
+      app:
+        condition: service_healthy
 
 volumes:
   mysql-data:
