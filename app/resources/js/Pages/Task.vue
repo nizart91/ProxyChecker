@@ -26,8 +26,10 @@ defineProps({ proxies: Array, task: Object })
             <tr v-for="proxy in proxies">
                 <td>{{ proxy.ip }}</td>
                 <td>
-                    <span v-if="proxy.status">enabled</span>
-                    <span v-else>disabled</span>
+                    <template v-if="proxy.finished_at">
+                        <span v-if="proxy.status">enabled</span>
+                        <span v-else>disabled</span>
+                    </template>
                 </td>
                 <td>
                     <span v-if="proxy.status">

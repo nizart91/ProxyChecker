@@ -29,6 +29,7 @@ services:
       - redis
     networks:
       - app-network
+    command: /bin/sh -c "composer update && php-fpm"
 
   redis:
     image: redis:alpine
@@ -68,6 +69,7 @@ services:
       - app-network
     depends_on:
       - db
+      - app
 
 volumes:
   mysql-data:
