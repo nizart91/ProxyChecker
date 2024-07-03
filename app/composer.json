@@ -38,12 +38,16 @@
             "@php artisan package:discover --ansi"
         ],
         "post-update-cmd": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+            "@php artisan key:generate --ansi",
             "@php artisan migrate --force",
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
             "npm install -f",
             "npm run build"
         ],
         "post-install-cmd": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+            "@php artisan key:generate --ansi",
             "@php artisan migrate --force",
             "npm install -f",
             "npm run build -y"
