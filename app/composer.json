@@ -38,14 +38,12 @@
             "@php artisan package:discover --ansi"
         ],
         "post-update-cmd": [
-            "@php artisan migrate --graceful --ansi",
-            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
             "@php artisan migrate --force",
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
             "npm install -f",
             "npm run build"
         ],
         "post-install-cmd": [
-            "@php artisan migrate --graceful --ansi",
             "@php artisan migrate --force",
             "npm install -f",
             "npm run build -y"
