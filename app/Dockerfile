@@ -44,6 +44,3 @@ RUN chmod -R 775 /var/www/bootstrap/cache
 RUN curl -sL https://deb.nodesource.com/setup_20.x | bash -
 RUN apt-get install -y nodejs
 
-RUN composer update
-
-
